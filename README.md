@@ -1,22 +1,121 @@
-**### 1. Recursion: Reversing an Array
+Recursion is a programming technique in which a function calls itself directly or indirectly in order to solve a problem. It involves breaking down a complex problem into simpler sub-problems, which are easier to solve. Recursion is particularly useful for tasks that can be defined in terms of similar subtasks, such as traversing data structures like trees and graphs, or solving problems that exhibit optimal substructure and overlapping subproblems, such as dynamic programming problems.
 
-The function aims to reverse an array using recursion. However, there is a mistake in the code that needs fixing.
+### Key Components of Recursion
 
-**Code:**
+1. **Base Case**: The condition under which the recursive function stops calling itself. This prevents infinite recursion and ensures that the function terminates.
+2. **Recursive Case**: The part of the function where the function calls itself with modified arguments, moving towards the base case.
+
+### Example of Recursion in Python
+
+Here is a simple example of a recursive function that calculates the factorial of a number:
 
 ```python
-def reverseArrayRec(arr, p1, p2):
-    if p1 >= p2:
-        return arr
+def factorial(n):
+    # Base case: if n is 0, return 1
+    if n == 0:
+        return 1
+    else:
+        # Recursive case: n * factorial of (n-1)
+        return n * factorial(n - 1)
 
-    # Swapping the elements at indices p1 and p2
-    arr[p1], arr[p2] = arr[p2], arr[p1]
+# Testing the function
+print(factorial(5))  # Output: 120
 
-    # Recursive call to reverse the next pair of elements
-    return reverseArrayRec(arr, p1 + 1, p2 - 1)
+```
 
-arr = [1, 2, 3, 4, 5]
-print(reverseArrayRec(arr, 0, len(arr) - 1))
+In this example:
+
+- The **base case** is when `n` is 0. The function returns 1, which stops the recursion.
+- The **recursive case** is when `n` is greater than 0. The function calls itself with `n - 1`.
+
+### Understanding Recursion with a Visual Example: Fibonacci Sequence
+
+The Fibonacci sequence is another classic example where recursion can be used. The Fibonacci sequence is defined as follows:
+
+- `F(0) = 0`
+- `F(1) = 1`
+- `F(n) = F(n - 1) + F(n - 2)` for `n > 1`
+
+Here is the recursive implementation in Python:
+
+```python
+def fibonacci(n):
+    # Base cases
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        # Recursive case
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Testing the function
+print(fibonacci(7))  # Output: 13
+
+```
+
+## PROBLEMS
+
+### 1. Print GFG n times without the loop.
+
+**Example:**
+
+```
+Input:
+5
+Output:GFG GFG GFG GFG GFG
+```
+
+**Your Task:** This is a function problem. You only need to complete the **function printGfg()** that takes **N as parameter** and prints N times **GFG** recursively. Don't print newline, it will be added by the driver code.
+
+```java
+class Solution {
+
+    void printGfg(int N) {
+        if( N > 0){
+            System.out.print("GFG ");
+            N--;
+            printGfg(N);
+        }
+        else{
+            return;
+        }
+        
+    }
+}
+```
+
+### 1. Print numbers from *1 to n* without the help of loops. You only need to complete the function printNos() that takes N as parameter and prints number from 1 to N recursively.
+
+```java
+class Solution
+{
+    
+  static void printNos(int N) {
+        if (N > 0) {
+            printNos(N - 1);  // Recurse with N-1
+            System.out.print(N + " ");  // Print the number after the recursive call
+        }
+    }
+}
+
+```
+
+## 3. Print numbers from **N to 1** (space separated) without the help of loops.
+
+```java
+class Solution {
+
+    void printNos(int N) {
+        if(N > 0){
+            System.out.print(N + " ");
+            printNos(N-1);
+        } else {
+            return;
+        }
+    }
+}
+```
 
 ```
 
